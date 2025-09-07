@@ -26,7 +26,7 @@ class TestCreateOrder:
     @allure.description("Неавторизованный пользователь не может сделать заказ, сервис возвращает ошибку 401 Unauthorized")
     def test_create_order_burger_not_auth_user_fail(self, default_burger):
         create_response = burgers_api.create_new_order(None, default_burger)
-        assert create_response.status_code == 401
+        assert create_response.status_code == 401  # Здесь ошибка в системе, потому что вместо ошибки 401 система разрешает неавторизованному пользователю делать заказ
 
 
     @allure.title("Ошибка 400 Bad Request если сделать пустой заказ неавторизованным пользователем")
