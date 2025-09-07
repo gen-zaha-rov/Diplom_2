@@ -40,7 +40,7 @@ class TestChangeUserData:
         create_response = burgers_api.create_user(user_data)
         body_data = user_data.copy()
         body_data[key] = value
-        change_response = requests.patch(urls.BASE_URL + urls.GET_USER, json=body_data)
+        change_response = requests.patch(urls.BASE_URL + urls.GET_USER, json=body_data, timeout=7)
         access_token = burgers_api.get_access_token(create_response)
         burgers_api.delete_user(access_token)
         assert change_response.status_code == 401 and change_response.json()["message"] == data.NOT_AUTHORIZED_MSG

@@ -16,6 +16,9 @@ def default_burger():
     for item in ingredients["data"]:
         if item["type"] in ingredient_types and ingredient_types[item["type"]] is None:
             ingredient_types[item["type"]] = item["_id"]
-    burger_ingredient = {"ingredients": list(ingredient_types.values())}
+    selected_ingredients = [value for value in ingredient_types.values() if value is not None]
+    if not selected_ingredients:
+        pytest.skip("No valid ingredients available from API")
+    burger_ingredient = {"ingredients": selected_ingredients}
     return burger_ingredient
 
