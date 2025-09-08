@@ -1,0 +1,12 @@
+/.idea
+/__pycache__/
+tests/__pycache__/
+.idea/*
+/.idea/workspace.xml
+*.doc
+*.docx
+*.rtf
+*.cfg
+.coverage
+venv/
+
